@@ -6,6 +6,10 @@
             </h1>
             <form action="{{route("cars.store")}}" method="POST">
                 @csrf
+
+                <label for="picture">Insert car picture</label>
+                <input type="text" name="picture" id="picture">
+
                 <label for="numero_telaio">Numero di telaio</label>
                 <input type="text" name="numero_telaio" id="numero_telaio">
         

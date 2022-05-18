@@ -23,6 +23,7 @@ class CreateCarsTable extends Migration
             $table->boolean("is_new")->default(true);
             $table->string("alimentazione");
             $table->float("prezzo", 8,2)->default(0);
+            $table->string("picture",200);
             $table->timestamps();
         });
     }

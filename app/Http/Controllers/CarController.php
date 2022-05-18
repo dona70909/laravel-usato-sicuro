@@ -38,13 +38,14 @@ class CarController extends Controller
     {   
         $data = $request->all();
         $car = new Car();
-            $car->numero_telaio= $data["numero_telaio"];
-            $car->model=$data["model"]; 
-            $car->porte=$data["porte"];
-            $car->data_immatricolazione=$data["data_immatricolazione"];
-            $car->marca=$data["marca"];
-            $car->alimentazione=$data["alimentazione"];
-            $car->prezzo=$data["prezzo"];
+            $car->numero_telaio = $data["numero_telaio"];
+            $car->model = $data["model"]; 
+            $car->porte = $data["porte"];
+            $car->data_immatricolazione = $data["data_immatricolazione"];
+            $car->marca = $data["marca"];
+            $car->alimentazione = $data["alimentazione"];
+            $car->prezzo = $data["prezzo"];
+            $car->picture = $data["picture"];
             $car->save();
 
             return redirect()->route("cars.show", $car->id);
