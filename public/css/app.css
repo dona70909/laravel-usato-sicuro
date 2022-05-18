@@ -11243,3 +11243,9 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+main .cars-wrapper {
+  gap: 1rem;
+}
+main .cars-wrapper .car-card img {
+  padding: 0.5rem 0;
+}

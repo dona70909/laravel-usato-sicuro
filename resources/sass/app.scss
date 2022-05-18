@@ -1,2 +1,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+main {
+    .cars-wrapper {
+        gap: 1rem;
+
+        .car-card {
+            img {
+                padding: .5rem 0;
+            }
+        }
+    }
+}

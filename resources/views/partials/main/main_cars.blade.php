@@ -1,5 +1,5 @@
 <section class="container-fluid">
-    <div class="row cars-wrapper">  
+    <div class="row d-flex justify-content-center cars-wrapper">  
         @foreach ($cars as $car)
             <div class="card car-card col-2">
                 <img class="card-img-top" src="{{$car->picture}}" alt="Card image cap">
@@ -18,11 +18,6 @@
                 </div>
             </div>
         @endforeach
-
-        {{--   <div class="buttons">
-            <button><a href="{{route("home")}}">Torna alla Home</a></button>
-            <button><a href="{{route("cars.create")}}">Aggiungi Auto</a></button>
-        </div> --}}
     </div>
 </section>
 
@@ -55,3 +50,9 @@
 
     
 </script>
+
+/* <style type="scoped" lang="scss">
+    .cars-wrapper{
+        gap: 1rem,2rem;
+    }
+</style> */
