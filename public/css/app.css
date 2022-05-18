@@ -11249,3 +11249,10 @@ main .cars-wrapper {
 main .cars-wrapper .car-card img {
   padding: 0.5rem 0;
 }
+
+main .carousel-item img {
+  margin: 0 auto;
+  /* width: 800px;
+  height: 600px; */
+  height: 400px;
+}

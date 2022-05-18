@@ -10,10 +10,10 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item condizione"></li>
                     <li class="list-group-item"> Prezzo {{$car->prezzo}} euro  </li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    {{--  <li class="list-group-item">Vestibulum at eros</li> --}}
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
+                    {{-- <a href="#" class="card-link">Card link</a> --}}
                     <a class="card-link"  href="{{route("cars.show", $car->id)}}">Dettagli auto</a>
                 </div>
             </div>

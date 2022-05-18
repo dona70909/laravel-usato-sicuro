@@ -3,3 +3,7 @@
 @section('header-content')
     @include('partials.header.header_nav')
 @endsection
+
+@section('main-content')
+    @include('partials.main.home_page')
+@endsection

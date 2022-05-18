@@ -12,3 +12,16 @@ main {
         }
     }
 }
+
+main {
+    .carousel-item {
+        img {
+            margin: 0 auto;
+
+            /* width: 800px;
+            height: 600px; */
+
+            height: 400px;
+        }
+    }
+}
