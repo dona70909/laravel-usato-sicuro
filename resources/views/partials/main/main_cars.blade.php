@@ -1,15 +1,15 @@
 <section class="container-fluid">
-    <div class="row">  
+    <div class="row cars-wrapper">  
         @foreach ($cars as $car)
-            <div class="card col-2">
+            <div class="card car-card col-2">
                 <img class="card-img-top" src="{{$car->picture}}" alt="Card image cap">
+
                 <div class="card-body">
-                    <h5 class="card-title">{{$car->marca}}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title text-uppercase">{{$car->marca}} - {{$car->model}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{$car->numero_telaio}}</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item condizione"></li>
+                    <li class="list-group-item"> Prezzo {{$car->prezzo}} euro  </li>
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
                 <div class="card-body">
@@ -25,3 +25,23 @@
         </div> --}}
     </div>
 </section>
+
+<script type='text/javascript'>
+
+    const cars = <?php echo json_encode($cars); ?>;
+
+    const conditions = document.querySelectorAll('.condizione')
+    
+    function checkNew() {
+        for (let i= 0; i < cars.length; i++) {
+            if(cars[i]['is_new'] == 1) {
+                conditions[i].innerText = "Condizione: Nuova"
+            } else {
+                conditions[i].innerText = "Condizione: Usata"
+            }
+        }
+    }
+    
+    checkNew()
+    
+</script>
