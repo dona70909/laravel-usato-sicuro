@@ -30,8 +30,19 @@
 
     const cars = <?php echo json_encode($cars); ?>;
 
-    const conditions = document.querySelectorAll('.condizione')
+    const conditions = document.querySelectorAll('.condizione');
+
     
+    /* call the function checkNew */
+    checkNew()
+
+
+    /**
+     *  function that CHECK if the boolean value $car->"is_new" from PHP is true
+     *  INSERT a String "Condizione: Nuova" if $car->"is_new" is true or
+     *  A String "Condizione: Usata" if $car->"is_new" is false 
+     * 
+    */
     function checkNew() {
         for (let i= 0; i < cars.length; i++) {
             if(cars[i]['is_new'] == 1) {
@@ -41,7 +52,6 @@
             }
         }
     }
-    
-    checkNew()
+
     
 </script>
