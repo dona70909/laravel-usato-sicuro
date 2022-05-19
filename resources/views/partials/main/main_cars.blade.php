@@ -1,5 +1,5 @@
 <section class="container-fluid">
-    <div class="row d-flex justify-content-center cars-wrapper">  
+    <div class="row d-flex p-3 justify-content-center cars-wrapper">  
         @foreach ($cars as $car)
             <div class="card car-card col-2">
                 <img class="card-img-top" src="{{$car->picture}}" alt="Card image cap">
@@ -50,9 +50,3 @@
 
     
 </script>
-
-/* <style type="scoped" lang="scss">
-    .cars-wrapper{
-        gap: 1rem,2rem;
-    }
-</style> */
