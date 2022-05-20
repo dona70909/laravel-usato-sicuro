@@ -37,6 +37,17 @@ class CarController extends Controller
     public function store(Request $request)
     {   
         $data = $request->all();
+
+        $request->validate([
+            'numero_telaio' => 'required',
+            'model' => 'required|min:3',
+            'porte' => 'required|integer|max:5|numeric',
+            'data_immatricolazione' => 'required|date',
+            'marca' => 'required|min:3',
+            'alimentazione' => 'required|min:3',
+            'prezzo' => 'required|numeric|min',
+        ]);
+
         $car = new Car();
             $car->numero_telaio = $data["numero_telaio"];
             $car->model = $data["model"]; 
@@ -84,6 +95,16 @@ class CarController extends Controller
     public function update(Request $request, Car $car)
     {
         $data = $request->all();
+
+        $request->validate([
+            'numero_telaio' => 'required',
+            'model' => 'required|min:3',
+            'porte' => 'required|integer|max:5|numeric',
+            'data_immatricolazione' => 'required|date',
+            'marca' => 'required|min:3',
+            'alimentazione' => 'required|min:3',
+            'prezzo' => 'required|numeric|min',
+        ]);
         
         $car->numero_telaio = $data["numero_telaio"];
         $car->model = $data["model"]; 
@@ -108,6 +129,6 @@ class CarController extends Controller
     {
         $car->delete();
         
-        return redirect()->route("cars.index",$car);
+        return redirect()->route("cars.index",$car)->with('message', $car->model .' deleted with success');
     }
 }

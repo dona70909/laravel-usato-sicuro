@@ -1,7 +1,19 @@
 <section class="container-fluid">
     <div class="row justify-content-center p-3">
+        <div class="row justify-content-center p-3">
         <div class="col-7">
-            <h1 class="text-uppercase"> Creazione nuova auto </h1>
+            @if ($errors->any())
+                {
+                <div class="alert alert-success">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                </div>
+                }
+            @endif
+        </div>
+        <div class="col-7">
+            <h1 class="text-uppercase"> Modifica {{$car->model}} -  {{$car->numero_telaio}}</h1>
 
             <form action="{{route("cars.update",$car)}}" method="POST">
                 @method('PUT')

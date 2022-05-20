@@ -1,7 +1,15 @@
 <section class="container-fluid">
     <div class="row d-flex p-3 justify-content-center cars-wrapper">  
+
+        
+        @if(session('message'))
+            <div class="alert alert-success">
+                <p>{{session('message')}}</p>
+            </div>
+        @endif
+        
         @foreach ($cars as $car)
-            <div class="card car-card col-2">
+            <div class="card car-card col-4">
                 <img class="card-img-top" src="{{$car->picture}}" alt="Card image cap">
 
                 <div class="card-body">
@@ -10,15 +18,15 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item condizione"></li>
                     <li class="list-group-item"> Prezzo {{$car->prezzo}} euro  </li>
-                    {{--  <li class="list-group-item">Vestibulum at eros</li> --}}
                 </ul>
-                <div class="card-body">
-                    {{-- <a href="#" class="card-link">Card link</a> --}}
-                    <a class="card-link"  href="{{route("cars.show", $car->id)}}">Dettagli auto</a>
-                    <a href="{{route('cars.edit',$car)}}">Edit car</a>
-                    {{--  <form action="" method="post">
-                        <a href="{{route('cars.',$car)}}">Edit car</a>
-                    </form> --}}
+                <div class="card-body d-flex justify-content-around">
+                    <a class="card-link btn btn-secondary"  href="{{route("cars.show", $car->id)}}">Dettagli auto</a>
+                    <a class="btn btn-warning" href="{{route('cars.edit',$car)}}">Edit car</a>
+                    <form action="{{route("cars.destroy", $car)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"> Elimina </button>
+                    </form>
                 </div>
             </div>
         @endforeach
