@@ -24,7 +24,7 @@ class CarsTableSeeder extends Seeder
             $car->marca = $faker->randomElement(['renault','citroen','ford','maserati','hummer']);
             $car->alimentazione = $faker->randomElement(['Benzina','Diesel','GPL','Metano','Vino']);
             $car->prezzo = $faker->randomFloat(2,8000, 100000);
-            $car->picture = "https://api.lorem.space/image/car?w=150&h=150";
+            $car->picture = "https://picsum.photos/1200/350?random=". rand(1, 55000);
             $car->save();
 
 

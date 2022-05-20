@@ -1,29 +1,32 @@
 <section class="container-fluid">
-    <div class="row py-3">
-        <div class="col-12">
+    <div class="row justify-content-center py-3">
+
+        <div class="col-12 py-2 edit-messsage">
             @if(session('message'))
                 <div class="alert alert-success">
                     <p>{{session('message')}}</p>
                 </div>
             @endif
-            <div class="car-card">
-                <div class="car-img">
-                    <img class="w-50 mb-2" src="{{$car->picture}}" alt="{{$car->model}}">
-                </div>
-                <div class="car-body mb-4">
-                    <h1 >Model: <strong class="text-uppercase">{{$car->model}}</strong> - Marca: <strong class="text-uppercase">{{$car->marca}}</strong></h1>
-                    <h2 class="mb-2">Informazioni auto</h2>
-                    <div class="card" style="width: 18rem;">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Numero telaio {{$car->numero_telaio}}</li>
-                            <li class="list-group-item">Data immatricolazione:{{$car->data_immatricolazione}}</li>
-                            <li class="list-group-item condizione">Condizione {{$car->is_new}}</li>
-                            <li class="list-group-item">alimentazione {{$car->alimentazione}}</li>
-                        </ul>
-                    </div>
+        </div>
+
+        <div class="car-card p-2 col-8">
+            <div class="car-img">
+                <img class="mb-2" src="{{$car->picture}}" alt="{{$car->model}}">
+            </div>
+            <div class="d-flex flex-column align-items-center mb-4">
+                <h1><strong class="text-uppercase">{{$car->model}}</strong> - <strong class="text-uppercase">{{$car->marca}}</strong></h1>
+                <h2 class="mb-2">Informazioni auto</h2>
+                <div class="info-box" style="width: 18rem;">
+                    <ul class="list-group text-center list-group-flush">
+                        <li class="list-group-item">Numero telaio: {{$car->numero_telaio}}</li>
+                        <li class="list-group-item">Data immatricolazione:{{$car->data_immatricolazione}}</li>
+                        <li class="list-group-item condizione">Condizione {{$car->is_new}}</li>
+                        <li class="list-group-item">alimentazione {{$car->alimentazione}}</li>
+                    </ul>
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
 

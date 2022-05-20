@@ -1,12 +1,13 @@
 <section class="container-fluid">
-    <div class="row d-flex p-3 justify-content-center cars-wrapper">  
+    <div class="row d-flex p-3 justify-content-center cars-wrapper">   
 
-        
-        @if(session('message'))
-            <div class="alert alert-success">
-                <p>{{session('message')}}</p>
-            </div>
-        @endif
+        <div class="com-12 delete-message">
+            @if(session('message'))
+                <div class="alert alert-success">
+                    <p>{{session('message')}}</p>
+                </div>
+            @endif
+        </div>
         
         @foreach ($cars as $car)
             <div class="card car-card col-4">
@@ -20,12 +21,17 @@
                     <li class="list-group-item"> Prezzo {{$car->prezzo}} euro  </li>
                 </ul>
                 <div class="card-body d-flex justify-content-around">
-                    <a class="card-link btn btn-secondary"  href="{{route("cars.show", $car->id)}}">Dettagli auto</a>
-                    <a class="btn btn-warning" href="{{route('cars.edit',$car)}}">Edit car</a>
+                    <button class="btn btn-secondary">
+                        <a class="card-link"  href="{{route("cars.show", $car->id)}}">Details</a>
+                    </button>
+                    <button class="btn btn-warning">
+                        <a href="{{route('cars.edit',$car)}}">Edit car</a>
+                    </button>
+
                     <form action="{{route("cars.destroy", $car)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"> Elimina </button>
+                        <button type="submit" class="btn btn-danger"> Delete </button>
                     </form>
                 </div>
             </div>

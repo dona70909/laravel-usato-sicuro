@@ -1,6 +1,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
 main {
     .cars-wrapper {
         gap: 1rem;
@@ -12,16 +13,20 @@ main {
         }
     }
 }
-
 main {
-    .carousel-item {
-        img {
-            margin: 0 auto;
+    button {
+        a {
+            color: black !important;
+        }
+    }
+}
 
-            /* width: 800px;
-            height: 600px; */
+header {
+    a {
+        text-transform: uppercase;
 
-            height: 400px;
+        &:hover {
+            color: gray;
         }
     }
 }
