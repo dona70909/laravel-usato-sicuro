@@ -3,13 +3,13 @@
         <div class="row justify-content-center p-3">
         <div class="col-7">
             @if ($errors->any())
-                {
-                <div class="alert alert-success">
+                
+                <div class="alert alert-danger">
                     @foreach ($errors->all() as $error)
                         {{ $error }}
                     @endforeach
                 </div>
-                }
+                
             @endif
         </div>
         <div class="col-7">

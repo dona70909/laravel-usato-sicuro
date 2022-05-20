@@ -41,11 +41,11 @@ class CarController extends Controller
         $request->validate([
             'numero_telaio' => 'required',
             'model' => 'required|min:3',
-            'porte' => 'required|integer|max:5|numeric',
+            'porte' => 'required|integer|max:5',
             'data_immatricolazione' => 'required|date',
             'marca' => 'required|min:3',
             'alimentazione' => 'required|min:3',
-            'prezzo' => 'required|numeric|min',
+            'prezzo' => 'required|numeric|min:4',
         ]);
 
         $car = new Car();
@@ -103,7 +103,7 @@ class CarController extends Controller
             'data_immatricolazione' => 'required|date',
             'marca' => 'required|min:3',
             'alimentazione' => 'required|min:3',
-            'prezzo' => 'required|numeric|min',
+            'prezzo' => 'required|numeric|min:4',
         ]);
         
         $car->numero_telaio = $data["numero_telaio"];
