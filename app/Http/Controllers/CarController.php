@@ -66,34 +66,48 @@ class CarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Car $car
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Car $car)
     {
-        //
+        return view('cars.edit',compact('car'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Car $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Car $car)
     {
-        //
+        $data = $request->all();
+        
+        $car->numero_telaio = $data["numero_telaio"];
+        $car->model = $data["model"]; 
+        $car->porte = $data["porte"];
+        $car->data_immatricolazione = $data["data_immatricolazione"];
+        $car->marca = $data["marca"];
+        $car->alimentazione = $data["alimentazione"];
+        $car->prezzo = $data["prezzo"];
+        $car->picture = $data["picture"];
+        $car->save();
+
+        return redirect()->route("cars.show", $car)->with('message', $car->model .' modified with success');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Car $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        //
+        $car->delete();
+        
+        return redirect()->route("cars.index",$car);
     }
 }

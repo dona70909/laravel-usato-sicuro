@@ -1,6 +1,11 @@
 <section class="container-fluid">
     <div class="row py-3">
         <div class="col-12">
+            <div class="alert alert-success">
+                @if(session('message'))
+                    <p>{{session('message')}}</p>
+                @endif
+            </div>
             <div class="car-card">
                 <div class="car-img">
                     <img class="w-50 mb-2" src="{{$car->picture}}" alt="{{$car->model}}">

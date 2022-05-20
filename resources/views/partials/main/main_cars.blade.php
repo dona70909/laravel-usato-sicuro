@@ -15,6 +15,10 @@
                 <div class="card-body">
                     {{-- <a href="#" class="card-link">Card link</a> --}}
                     <a class="card-link"  href="{{route("cars.show", $car->id)}}">Dettagli auto</a>
+                    <a href="{{route('cars.edit',$car)}}">Edit car</a>
+                    {{--  <form action="" method="post">
+                        <a href="{{route('cars.',$car)}}">Edit car</a>
+                    </form> --}}
                 </div>
             </div>
         @endforeach
