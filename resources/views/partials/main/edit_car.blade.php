@@ -50,8 +50,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="marca">Marca</label>
-                        <input class="form-control" type="text" name="marca" id="marca" value="{{$car->marca}}">
+                        <label for="brand_id">Brand</label>
+                        <select name="brand_id" id="brand_id" class="brand_id">
+                            <option value="">Select brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
         
                     <div class="form-group">

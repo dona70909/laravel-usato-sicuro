@@ -1,5 +1,8 @@
 <section class="container-fluid">
     <div class="row justify-content-center p-3">
+        {{-- <div class="col-7">
+            @dump($brands);
+        </div> --}}
         <div class="col-7">
             <h1 class="text-uppercase fw-bolder"> New car </h1>
 
@@ -56,9 +59,14 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="marca">Marca</label>
-                        <input class="form-control" type="text" name="marca" id="marca">
-                        @error('marca')
+                        <label for="brand_id">Marca</label>
+                        <select name="brand_id" id="brand_id" class="brand_id">
+                            <option value="">Select brand</option>
+                            @foreach ($brands as $brand)
+                                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                            @endforeach
+                        </select> 
+                        @error('brand_id')
                             <div class="alert alert-danger">
                                 {{$message}}
                             </div>

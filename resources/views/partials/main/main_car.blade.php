@@ -22,6 +22,7 @@
                         <li class="list-group-item">Data immatricolazione:{{$car->data_immatricolazione}}</li>
                         <li class="list-group-item condizione">Condizione {{$car->is_new}}</li>
                         <li class="list-group-item">alimentazione {{$car->alimentazione}}</li>
+                        <li class="list-group-item">brand {{$car->brand->brand_name}}</li>
                     </ul>
                 </div>
             </div>
@@ -29,6 +30,7 @@
         
     </div>
 </section>
+
 
 <script type='text/javascript'>
 

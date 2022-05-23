@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Car;
-
+use App\Model\Brand;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -15,7 +15,9 @@ class CarController extends Controller
     public function index()
     {
         $cars= Car::all();
-        return view("cars.index", compact("cars"));
+
+
+        return view("cars.index", ["cars" => $cars]);
     }
 
     /**
@@ -25,7 +27,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view("cars.create");
+        $brands = Brand::all();
+        return view("cars.create",compact('brands'));
     }
 
     /**
@@ -43,8 +46,8 @@ class CarController extends Controller
             'model' => 'required|min:3',
             'porte' => 'required|integer|max:5',
             'data_immatricolazione' => 'required|date',
-            'marca' => 'required|min:3',
             'alimentazione' => 'required|min:3',
+            'brand_id' => 'required|',
             'prezzo' => 'required|numeric|min:4',
         ]);
 
@@ -54,7 +57,7 @@ class CarController extends Controller
         $car->model = $data["model"]; 
         $car->porte = $data["porte"];
         $car->data_immatricolazione = $data["data_immatricolazione"];
-        $car->marca = $data["marca"];
+        $car->brand_id = $data["brand_id"];
         $car->alimentazione = $data["alimentazione"];
         $car->prezzo = $data["prezzo"];
         $car->picture = $data["picture"];
@@ -72,7 +75,8 @@ class CarController extends Controller
     public function show($id)
     {
         $car= Car::findOrFail($id);
-        return view("cars.show", compact("car"));
+        $brand = Brand::all();
+        return view("cars.show", ["car" => $car , "brand" => $brand ]);
     }
 
     /**
@@ -83,7 +87,8 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return view('cars.edit',compact('car'));
+        $brands = Brand::all();
+        return view('cars.edit',["car" => $car , "brands" => $brands ]);
     }
 
     /**
@@ -102,7 +107,6 @@ class CarController extends Controller
             'model' => 'required|min:3',
             'porte' => 'required|integer|max:5|numeric',
             'data_immatricolazione' => 'required|date',
-            'marca' => 'required|min:3',
             'alimentazione' => 'required|min:3',
             'prezzo' => 'required|numeric|min:4',
         ]);
@@ -111,7 +115,6 @@ class CarController extends Controller
         $car->model = $data["model"]; 
         $car->porte = $data["porte"];
         $car->data_immatricolazione = $data["data_immatricolazione"];
-        $car->marca = $data["marca"];
         $car->alimentazione = $data["alimentazione"];
         $car->prezzo = $data["prezzo"];
         $car->picture = $data["picture"];
