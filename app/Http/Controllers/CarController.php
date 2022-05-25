@@ -29,7 +29,8 @@ class CarController extends Controller
     public function create()
     {
         $brands = Brand::all();
-        return view("cars.create",compact('brands'));
+        $colors = Colour::all();
+        return view("cars.create",["brands" => $brands,'colors' => $colors]);
     }
 
     /**
@@ -43,13 +44,14 @@ class CarController extends Controller
         $data = $request->all();
 
         $request->validate([
-            'numero_telaio' => 'required',
+            'numero_telaio' => 'required|min:3',
             'model' => 'required|min:3',
             'porte' => 'required|integer|max:5',
             'data_immatricolazione' => 'required|date',
             'alimentazione' => 'required|min:3',
             'brand_id' => 'required|',
             'prezzo' => 'required|numeric|min:4',
+            'colour_item' => 'required'
         ]);
 
         $car = new Car();
@@ -64,6 +66,8 @@ class CarController extends Controller
         $car->picture = $data["picture"];
         $car->save();
 
+        $car->colours()->attach($data['colour_item']);
+
         return redirect()->route("cars.show", $car->id);
     }
 
@@ -77,7 +81,8 @@ class CarController extends Controller
     {
         $car= Car::findOrFail($id);
         $brand = Brand::all();
-        return view("cars.show", ["car" => $car , "brand" => $brand ]);
+        $colors = Colour::all();
+        return view("cars.show", ["car" => $car , "brand" => $brand,'colors' => $colors ]);
     }
 
     /**
@@ -105,7 +110,7 @@ class CarController extends Controller
         $data = $request->all();
 
         $request->validate([
-            'numero_telaio' => 'required',
+            'numero_telaio' => 'required|min:3',
             'model' => 'required|min:3',
             'porte' => 'required|integer|max:5|numeric',
             'data_immatricolazione' => 'required|date',
@@ -120,7 +125,10 @@ class CarController extends Controller
         $car->alimentazione = $data["alimentazione"];
         $car->prezzo = $data["prezzo"];
         $car->picture = $data["picture"];
+        $car->colours()->sync($data['colour_item']);
         $car->save();
+
+        
 
         return redirect()->route("cars.show", $car)->with('message', $car->model .' modified with success');
     }

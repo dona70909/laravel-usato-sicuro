@@ -23,6 +23,11 @@
                         <li class="list-group-item condizione">Condizione {{$car->is_new}}</li>
                         <li class="list-group-item">alimentazione {{$car->alimentazione}}</li>
                         <li class="list-group-item">brand {{$car->brand->brand_name}}</li>
+                        <li class="list-group-item">  
+                            @foreach ($car->colours as $item)
+                            <p class="badge rounded-pill w-25 my-0 mx-1" style="background-color: {{$item->color}}">{{$item->name}}</p>
+                            @endforeach
+                        </li>
                     </ul>
                 </div>
             </div>

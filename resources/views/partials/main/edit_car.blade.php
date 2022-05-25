@@ -27,18 +27,18 @@
                 <div class="form-row justify-content-between">
                     <div class="form-group">
                         <label for="numero_telaio">Numero di telaio</label>
-                        <input class="form-control" type="text" name="numero_telaio" id="numero_telaio" value="{{$car->numero_telaio}}">
+                        <input class="form-control" type="text" name="numero_telaio" id="numero_telaio" value="{{ old('numero_telaio') ?? $car->numero_telaio }} ">
                     </div> 
     
                     <div class="form-group">
                         <label for="model">Modello</label>
-                        <input class="form-control" type="text" name="model" id="model" value="{{$car->model}}">
+                        <input class="form-control" type="text" name="model" id="model" value="{{ old('model') ?? $car->model}}">
                     </div>
     
                     
                     <div class="form-group">
                         <label for="porte">Porte</label>
-                        <input class="form-control" type="text" name="porte" id="porte" value="{{$car->porte}}">
+                        <input class="form-control" type="text" name="porte" id="porte" value="{{ old('porte') ?? $car->porte}}">
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     
                     <div class="form-group">
                         <label for="data_immatricolazione">Immatricolazione</label>
-                        <input class="form-control" type="text" name="data_immatricolazione" id="data_immatricolazione" value="{{$car->data_immatricolazione}}">
+                        <input class="form-control" type="text" name="data_immatricolazione" id="data_immatricolazione" value="{{old('data_immatricolazione') ?? $car->data_immatricolazione}}">
                     </div>
                     
                     <div class="form-group">
@@ -61,17 +61,26 @@
         
                     <div class="form-group">
                         <label for="alimentazione">Alimentazione</label>
-                        <input class="form-control" type="text" name="alimentazione" id="alimentazione"  value="{{$car->alimentazione}}"> 
+                        <input class="form-control" type="text" name="alimentazione" id="alimentazione"  value="{{old('alimentazione') ?? $car->alimentazione}}"> 
                     </div>
 
-                    {{-- <div class="form-group">
-                        <label for="colors"></label>
-                        <input class="form-control" type="text" name="alimentazione" id="alimentazione"  value="{{$car->alimentazione}}"> 
-                    </div> --}}
+                    <div class="form-group">
+
+                        @foreach ($colors as $colour_item)
+                            <input class="form-check-input" type="checkbox" name="colour_item[]" value="{{$colour_item->id}}"
+                            {{-- @if($post->categories->contains($category)) checked @endif --}}
+                            {{ $car->colours->contains($colour_item) ? 'checked' : '' }}
+                            >
+                            <label for="colour_item" class="badge rounded-pill me-3" style="background-color: {{ $colour_item->color }}">
+                                {{$colour_item->name}}
+                            </label>
+                            
+                        @endforeach
+                    </div> 
 
                     <div class="form-group">
                         <label for="prezzo">Prezzo</label>
-                        <input class="form-control" type="text" name="prezzo" id="prezzo"  value="{{$car->prezzo}}"> 
+                        <input class="form-control" type="text" name="prezzo" id="prezzo"  value="{{old('prezzo') ?? $car->prezzo}}"> 
                     </div>
 
                 </div>
