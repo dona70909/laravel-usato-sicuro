@@ -33,7 +33,7 @@
                         <a href="{{route('cars.edit',$car)}}">Edit car</a>
                     </button>
 
-                    <form action="{{route("cars.destroy", $car)}}" method="POST">
+                    <form action="{{route("cars.destroy", $car)}}" method="POST" class="car-destroyer" car-model="{{ucfirst($car->model)}}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger"> Delete </button>
@@ -70,6 +70,18 @@
             }
         }
     }
+
+
+    const deleteForms = document.querySelectorAll('.car-destroyer');
+    deleteForms.forEach(singleForm => {
+        singleForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // § blocchiamo l'invio del form
+            userConfirmation = window.confirm(`Are you sure to delete ${this.getAttribute('car-model')}?` );
+            if (userConfirmation) {
+                this.submit();
+            }
+        })
+    });
 
     
 </script>
