@@ -71,7 +71,13 @@
         }
     }
 
-
+    /**
+     *  # First i get the form with the query selector (all the elements with that class) 
+     * % foreach of the form and for each element add an EVENT => SUBMIT
+     * & BEFORE GETTING THE DELETE FORM   event.preventDefault(); 
+     * ! ASK TO THE USER IF HE/SHE WANTS TO DELETE THE ITEM
+     * ? IF HE/SHE SUBMIT DELETE THE ITEM OTHERWISE SHE DOESN'T
+    */
     const deleteForms = document.querySelectorAll('.car-destroyer');
     deleteForms.forEach(singleForm => {
         singleForm.addEventListener('submit', function (event) {
