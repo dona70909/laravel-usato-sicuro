@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Car;
 use App\Model\Brand;
+use App\Model\Colour;
+use ColoursTableSeeder;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -15,9 +17,8 @@ class CarController extends Controller
     public function index()
     {
         $cars= Car::all();
-
-
-        return view("cars.index", ["cars" => $cars]);
+        $colors = Colour::all();
+        return view("cars.index", ["cars" => $cars,'colors' => $colors]);
     }
 
     /**
@@ -88,7 +89,8 @@ class CarController extends Controller
     public function edit(Car $car)
     {
         $brands = Brand::all();
-        return view('cars.edit',["car" => $car , "brands" => $brands ]);
+        $colors = Colour::all();
+        return view('cars.edit',["car" => $car , "brands" => $brands , 'colors' => $colors]);
     }
 
     /**

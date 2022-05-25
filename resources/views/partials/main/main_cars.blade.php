@@ -19,6 +19,11 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item condizione"></li>
                     <li class="list-group-item"> Prezzo {{$car->prezzo}} euro  </li>
+                    <div class="d-flex m-2 align-content-center justify-content-center">
+                        @foreach ($car->colours as $item)
+                        <p class="badge rounded-pill w-25 my-0 mx-1" style="background-color: {{$item->color}}">{{$item->name}}</p>
+                        @endforeach
+                    </div>
                 </ul>
                 <div class="card-body d-flex justify-content-around">
                     <button class="btn btn-secondary">

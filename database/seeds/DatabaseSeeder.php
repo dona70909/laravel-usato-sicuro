@@ -12,7 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $this->call([BrandTableSeeder::class,CarsTableSeeder::class]);
+        $this->call([
+            
+            BrandTableSeeder::class,
+            ColoursTableSeeder::class,
+            CarsTableSeeder::class,
+            CarsColoursTableSeeder::class
+        ]);
 
     }
 }

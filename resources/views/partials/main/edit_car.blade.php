@@ -64,6 +64,11 @@
                         <input class="form-control" type="text" name="alimentazione" id="alimentazione"  value="{{$car->alimentazione}}"> 
                     </div>
 
+                    {{-- <div class="form-group">
+                        <label for="colors"></label>
+                        <input class="form-control" type="text" name="alimentazione" id="alimentazione"  value="{{$car->alimentazione}}"> 
+                    </div> --}}
+
                     <div class="form-group">
                         <label for="prezzo">Prezzo</label>
                         <input class="form-control" type="text" name="prezzo" id="prezzo"  value="{{$car->prezzo}}"> 
